@@ -2,8 +2,7 @@
 Description: Terraform configuration file for to ensure that all existing instances 
 of an ASG have the same tags as the ASG. 
 
-Source: https://github.com/schollii/my-devops-lab/main/terraform/tag_asg_managed_instances.tf
-Copyright (c) 2023 Oliver Schoenborn
+Source: https://github.com/schollii/my-devops-lab/blob/main/terraform/tag_asg_managed_instances.tf
 Licensed under the MIT license (see LICENSE file in https://github.com/schollii/my-devops-lab)
 */
     

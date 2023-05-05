@@ -6,7 +6,8 @@
 # - get verbs for deployments: kubectl verbs deployments apps
 # (the second argument is required only for non-core resources)
 # Install: 
-#   git archive --remote=git://github.com/schollii/my-devops-lab.git HEAD:kubernetes kubectl-verbs | tar -xo kubectl-verbs
+#   curl -sL https://github.com/schollii/my-devops-lab/archive/refs/heads/main.zip --output /tmp/schollii.zip
+#   unzip -p  /tmp/schollii.zip my-devops-lab-main/kubernetes/kubectl-verbs > kubectl-verbs
 #   install kubectl-verbs /usr/local/bin (or just chmod +x kubectl-verbs then move it to somewhere on your path)
 # Run: 
 #   in one terminal, start the k8s proxy for API server: kubectl proxy --port 8080

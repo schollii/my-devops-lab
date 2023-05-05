@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Get the verbs for a particular resource type. 
+# Examples: 
+# - get verbs for configmaps: kubectl verbs configmaps 
+# - get verbs for deployments: kubectl verbs deployments apps
+# (the second argument is required only for non-core resources)
+# Install: 
+#   git archive --remote=git://github.com/schollii/my-devops-lab.git HEAD:kubernetes kubectl-verbs | tar -xo kubectl-verbs
+#   install kubectl-verbs /usr/local/bin (or just chmod +x kubectl-verbs then move it to somewhere on your path)
+# Run: 
+#   in one terminal, start the k8s proxy for API server: kubectl proxy --port 8080
+#   in another terminal, run kubectl verbs ...args... per examples
+
+resourceName=$1
+groupName=${2:-}
+
+if [[ -z $groupName ]]; then
+  curl -s http://localhost:8080/api/v1 | jq '.resources[] | [.name, (.verbs | join(" "))] | join(" = ")' -r | grep ^$resourceName
+else
+  api=$( curl -s http://localhost:8080/apis | jq '.groups[].preferredVersion.groupVersion' -r | grep ^$groupName )
+  curl -s http://localhost:8080/apis/$api | jq '.resources[] | [.name, (.verbs | join(" "))] | join(" = ")' -r | grep ^$resourceName
+fi

@@ -7,8 +7,8 @@
 # (the second argument is required only for non-core resources)
 # Install: 
 #   curl -sL https://github.com/schollii/my-devops-lab/archive/refs/heads/main.zip --output /tmp/schollii.zip
-#   sudo unzip -p  /tmp/schollii.zip my-devops-lab-main/kubernetes/kubectl-verbs > /usr/local/bin/kubectl-verbs
-#   sudo chmod +x /usr/local/bin/kubectl-verbs (or just chmod +x kubectl-verbs then move it to somewhere on your path)
+#   unzip -p  /tmp/schollii.zip my-devops-lab-main/kubernetes/kubectl-verbs > /tmp/kubectl-verbs
+#   sudo install /tmp/kubectl-verbs /usr/local/bin (or just chmod +x kubectl-verbs then move it to somewhere on your path)
 # Run: 
 #   in one terminal, start the k8s proxy for API server: kubectl proxy --port 8080
 #   in another terminal, run kubectl verbs ...args... per examples
